@@ -12,8 +12,9 @@ module.exports = (app) => {
             res.status(400).json(err);
         });
     });
-    
+
     app.post('/api/workouts', ({ body }, res) => {
+        console.log(body)
         Workout.create(body)
         .then(dbWorkout => {
             res.json(dbWorkout);
@@ -23,23 +24,33 @@ module.exports = (app) => {
         });
     });
     
-    app.put('/api/workouts/:id', (req, res) => {
-        Workout.update(
-            {
-                _id: req.params.id
-            },
-            {
-                $push: {
-                    workouts: req.body
-                }
-            }
-        )
-        .then(dbWorkout => {
-            res.json(dbWorkout)
-        })
-        .catch(err => {
-            res.status(400).json(err);
-        });
+    app.put('/api/workouts/:id', async (req, res) => {
+        try {
+            const workout = await Workout.findById(req.params.id)
+            console.log(workout)
+            console.log(req.body)
+            console.log(workout.exercises)
+            workout.exercises.push(req.body)
+            await workout.save()
+            res.status(200).json(workout)
+        } catch (err) {throw err.message}
+
+        // Workout.update(
+        //     {
+        //         _id: req.params.id
+        //     },
+        //     {
+        //         $push: {
+        //             workouts: req.body
+        //         }
+        //     }
+        // )
+        // .then(dbWorkout => {
+        //     res.json(dbWorkout)
+        // })
+        // .catch(err => {
+        //     res.status(400).json(err);
+        // });
     });
     
     app.get('/api/workouts/range', (req, res) => {
