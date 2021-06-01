@@ -99,7 +99,6 @@ async function handleFormSubmit(event) {
   event.preventDefault();
 
   let workoutData = {};
-  console.log(workoutData)
   
   if (workoutType === "cardio") {
     workoutData.type = "cardio";

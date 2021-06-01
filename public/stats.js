@@ -174,16 +174,16 @@ function populateChart(data) {
 }
 
 //duration
-function totalDuration(data) {
-  const duration = [];
-  data.forEach(workout => {
-    workout.exercises.forEach(exercise => {
-      duration.push(exercise.duration)
-    });
-  })
+// function totalDuration(data) {
+//   const duration = [];
+//   data.forEach(workout => {
+//     workout.exercises.forEach(exercise => {
+//       duration.push(exercise.duration)
+//     });
+//   })
 
-  return totalDuration
-}
+//   return totalDuration
+// }
 
 function calculateTotalWeight(data) {
   let totals = [];
