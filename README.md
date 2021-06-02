@@ -26,7 +26,7 @@ The user should be able to:
   * View the total duration of each workout from the past seven workouts on the `stats` page.
 
   ## Mock-up 
-  Deployed link: 
+  Deployed link: https://calm-crag-07582.herokuapp.com/
 
 Homepage:
   ![homepage](./public/images/tracker.png)
